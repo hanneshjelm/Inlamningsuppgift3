@@ -86,6 +86,22 @@ public class Main extends JFrame implements ActionListener  {
         System.exit(0);
     }
 
+    private boolean isNextToEmpty(int index1, int index2) {
+        int row1 = index1 / 4;
+        int col1 = index1 % 4;
+        int row2 = index2 / 4;
+        int col2 = index2 % 4;
+        return (Math.abs(row1 - row2) + Math.abs(col1 - col2)) == 1;
+    }
+
+    private boolean done() {
+        for (int i = 0; i < 15; i++) {
+            if (!buttons.get(i).getText().equals(String.valueOf(i + 1))) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 
     public static void main(String[] args) {
