@@ -53,6 +53,39 @@ public class Main extends JFrame implements ActionListener  {
 
     }
 
+    private void newGame(){
+        p2.removeAll();
+        Collections.shuffle(buttons);
+        for (JButton button : buttons) {
+            p2.add(button);
+        }
+        p2.revalidate();
+        p2.repaint();
+    }
+
+    private void fusk() {
+        JButton button15 = null;
+        for (JButton btn : buttons) {
+            if (btn.getText().equals("15")) {
+                button15 = btn;
+                break;
+            }
+        }
+        if (button15 != null) {
+            Collections.swap(buttons, buttons.indexOf(button5), buttons.indexOf(button15));
+            p2.removeAll();
+            for (JButton button : buttons) {
+                p2.add(button);
+            }
+            p2.revalidate();
+            p2.repaint();
+        }
+
+    }
+    private void exit(){
+        System.exit(0);
+    }
+
 
 
     public static void main(String[] args) {
