@@ -76,6 +76,7 @@ public class Main extends JFrame implements ActionListener  {
             Collections.swap(buttons, buttons.indexOf(button5), buttons.indexOf(button15));
             p2.removeAll();
             for (JButton button : buttons) {
+                button.setBackground(null);
                 p2.add(button);
             }
             p2.revalidate();
