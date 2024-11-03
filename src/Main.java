@@ -18,7 +18,38 @@ public class Main extends JFrame implements ActionListener  {
 
     public Main() {
 
+        buttons = new ArrayList<>();
 
+        for (int i = 1; i <= 15; i++) {
+            JButton button = new JButton(String.valueOf(i));
+            button.addActionListener(this);
+            buttons.add(button);
+            p2.add(button);
+        }
+
+        setTitle("Test");
+        this.add(p);
+        p.setLayout(new BorderLayout());
+        p.add(p2, BorderLayout.CENTER);
+        p.add(p3, BorderLayout.SOUTH);
+        p2.setLayout(new GridLayout(4, 4));
+        p3.setLayout(new FlowLayout());
+
+        p3.add(button2);
+        p3.add(button3);
+        p3.add(button4);
+
+        button5.setEnabled(false);
+        buttons.add(button5);
+
+        setSize(400, 400);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+        button2.addActionListener(e -> newGame());
+        button3.addActionListener(e -> exit());
+        button4.addActionListener(e -> fusk());
 
     }
 
