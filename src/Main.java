@@ -27,7 +27,7 @@ public class Main extends JFrame implements ActionListener  {
             p2.add(button);
         }
 
-        setTitle("Test");
+        setTitle("15 puzzle");
         this.add(p);
         p.setLayout(new BorderLayout());
         p.add(p2, BorderLayout.CENTER);
@@ -57,6 +57,7 @@ public class Main extends JFrame implements ActionListener  {
         p2.removeAll();
         Collections.shuffle(buttons);
         for (JButton button : buttons) {
+            button.setBackground(null);
             p2.add(button);
         }
         p2.revalidate();
@@ -111,17 +112,20 @@ public class Main extends JFrame implements ActionListener  {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton pressedButton = (JButton) e.getSource();
-        int preesedIndex = buttons.indexOf(pressedButton);
+        int pressedIndex = buttons.indexOf(pressedButton);
         int emptyButtonIndex = buttons.indexOf(button5);
 
-        if (isNextToEmpty(preesedIndex, emptyButtonIndex)) {
-            Collections.swap(buttons, preesedIndex, emptyButtonIndex);
+        if (isNextToEmpty(pressedIndex, emptyButtonIndex)) {
+            Collections.swap(buttons, pressedIndex, emptyButtonIndex);
             p2.removeAll();
             for (JButton button : buttons) {
                 p2.add(button);
             }
             p2.revalidate();
             if (done()) {
+                for (JButton button : buttons) {
+                    button.setBackground(Color.GREEN);
+                }
                 JOptionPane.showMessageDialog(this, "Grattis, du vann!");
             }
         }
