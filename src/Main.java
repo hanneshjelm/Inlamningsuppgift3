@@ -110,6 +110,20 @@ public class Main extends JFrame implements ActionListener  {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        JButton pressedButton = (JButton) e.getSource();
+        int preesedIndex = buttons.indexOf(pressedButton);
+        int emptyButtonIndex = buttons.indexOf(button5);
 
+        if (isNextToEmpty(preesedIndex, emptyButtonIndex)) {
+            Collections.swap(buttons, preesedIndex, emptyButtonIndex);
+            p2.removeAll();
+            for (JButton button : buttons) {
+                p2.add(button);
+            }
+            p2.revalidate();
+            if (done()) {
+                JOptionPane.showMessageDialog(this, "Grattis, du vann!");
+            }
+        }
     }
 }
